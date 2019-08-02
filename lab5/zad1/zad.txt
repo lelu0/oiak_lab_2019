@@ -1,0 +1,5 @@
+1. program wczyta i wyswietli obraz kolorowy i czarno bialy
+2. obrot obrazu wz. X
+3. obrot wz. Y
+4. manipulacaj pikselem - zmiany nasycenia barw, negatywy(uzupelnianie kodu do samych 1)
+rozmycie - zamiana piksela na srednia rytmetyczna z sasiednich pikseli

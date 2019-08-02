@@ -1,0 +1,19 @@
+1. aplikacja na podstawie pytan w c ustawia bity fpucr
+2. FPUSR - identyfikacja stanu bitów (dow. rejestru 16-bit) i wysłanie info do aplikacji w c,
+ stąd komunikat. funkcja w asm testuje. 
+3. generowanie jakis bledow, np. dziel przez 0
+4. aplikacja cos liczaca, na przyklad pole bardzo niskiego trojkata, albo pierwiastki rownania 
+
+
+--- 
+ustawienie i weryfikacja bitu: 
+ustaw na 1 - or maska(0b0001010...)
+-||- na 0 - and + maska
+
+testowanie: 
+- and - niszczy zawartosc
+- test - maska, rej, ustawia ZF
+- ror/rol - skrajny bit do flagi CF
+
+ 
+ 

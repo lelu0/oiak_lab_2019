@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+int nwd(int a, int b){
+	int ret = 1;
+	while(ret != 0){
+		asm(
+		"movl %1, %eax \n\t"
+		"movl $0, %edx\n\t"
+		"div %2\n\t"
+		"cmp $0, %edx\n\t"
+		"je retf #obliczone\n\t
+"
+		"movl %2, %1 #przypisujemy liczbie a liczbe b\n\t"
+		"movl %edx, %1 #reszte przypisujemy liczbie b\n\t"
+		"retf:\n\t"
+		"movl %edx, %0\n\t"
+		:"=r"(ret)
+		:"r" (a), "r" (b)
+		);
+	}
+}
+int main(){
+	int a = 12;
+	int b = 4;
+	int c;
+
+	asm(
+	"addl %%ebx, %%eax \n\t"
+	"movl %%eax, %%ecx \n\t"
+
+	: "=c"(c)
+	: "b" (b), "a" (a)
+	);
+	//rcx (c) jako argument write only (zwrotny), b i a jako argumenty funkcji w rbx i rax
+	printf("suma liczb: %d\n", c);
+
+	//placeholders
+	asm(
+	"sub %2, %1 \n\t"
+	"movl %1, %0 \n\t"
+	: "=r" (c)
+	: "r" (a), "r" (b)
+	); //0 - wartosc zwrotu, argumenty - 1,2... 
+
+	printf("roznica liczb: %d\n", c);
+	return 0;
+}
